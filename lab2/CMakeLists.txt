@@ -3,7 +3,7 @@ project(decimal)
 
 set(CMAKE_CXX_STANDARD 17)
 
-# Google Test
+#google Test
 include(FetchContent)
 FetchContent_Declare(
     googletest
@@ -12,9 +12,9 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-# Основная программа
+#основная программа
 add_executable(main main.cpp src/decimal.cpp)
 
-# Тесты
+#тесты
 add_executable(tests test/test_decimal.cpp src/decimal.cpp)
 target_link_libraries(tests gtest_main)
