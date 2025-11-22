@@ -19,14 +19,12 @@ int main()
         Decimal sum = first + second;
         sum.print(std::cout);
         break;
-
     }
 
     case '-': {
         Decimal diff = first - second;
         diff.print(std::cout);
         break;
-
     }
 
     case '=': {
@@ -42,7 +40,6 @@ int main()
     case '>': {
         std::cout << (first > second);
         break;
-
     }
 
     default: {
