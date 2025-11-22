@@ -1,76 +1,91 @@
-#include <gtest/gtest.h>
+#include "include/decimal.h"
 
-#include "../include/decimal.h"
-
-TEST(test_01, addition_test)
+int main()
 
 {
 
-    Decimal a("12");
+    std::cout << std::boolalpha;
 
-    Decimal b("34");
+    std::string num1, num2;
 
-    Decimal result = a + b;
+    char op;
 
-    ASSERT_TRUE(a < b);  // 12 < 34
+    // Ввод данных
 
-}
+    std::cout << "Введите первое число (в семеричной системе): ";
 
-TEST(test_02, subtraction_test)
+    std::cin >> num1;
 
-{
+    std::cout << "Введите второе число (в семеричной системе): ";
 
-    Decimal a("50");
+    std::cin >> num2;
 
-    Decimal b("30");
+    std::cout << "Введите операцию из [+,-,>,<,==]: ";
 
-    Decimal result = a - b;
+    std::cin >> op;
 
+   Decimal first(num1), second(num2);
 
-    ASSERT_TRUE(a > b);  // 50 > 30
+    std::cout << "\nОтвет: ";
 
-}
+    switch (op) {
 
-TEST(test_03, equality_test)
+    case '+': {
 
-{
+        Decimal sum = first + second;
 
-    Decimal a("100");
+        sum.print(std::cout);
 
-    Decimal b("100");
+        break;
 
-    ASSERT_TRUE(a == b);  // 100 == 100
+    }
 
-}
+    case '-': {
 
-TEST(test_04, inequality_test)
+        Decimal diff = first - second;
 
-{
+        diff.print(std::cout);
 
-    Decimal a("100");
+        break;
 
-    Decimal b("200");
+    }
 
-    ASSERT_TRUE(a != b);  // 100 != 200
+    case '=': {
 
-}
+        std::cout << (first == second);
 
-TEST(test_05, copy_test)
+        break;
 
-{
+    }
 
-    Decimal a("123");
+    case '<': {
 
-    Decimal b = a;
+        std::cout << (first < second);
 
-    ASSERT_TRUE(a == b);
+        break;
 
-}
+    }
 
-int main(int argc, char **argv) {
+    case '>': {
 
-    testing::InitGoogleTest(&argc, argv);
+        std::cout << (first > second);
 
-    return RUN_ALL_TESTS();
+        break;
+
+    }
+
+    default: {
+
+        std::cerr << "Ошибка: недопустимая операция.\n";
+
+        break;
+
+    }
+
+    }
+
+    std::cout << '\n';
+
+    return 0;
 
 }
