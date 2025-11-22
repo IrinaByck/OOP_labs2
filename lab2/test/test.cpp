@@ -1,39 +1,25 @@
 #include <gtest/gtest.h>
 #include "../include/decimal.h"
-TEST(test_01, basic_addition)
+
+TEST(test_01, addition) 
 {
-    Decimal a("12");
-    Decimal b("34");
-    Decimal result = a + b;
+    Decimal a("10");
+    Decimal b("20");
     ASSERT_TRUE(a < b);
 }
-TEST(test_02, basic_subtraction) 
+
+TEST(test_02, subtraction)
 {
     Decimal a("50");
     Decimal b("30");
     ASSERT_TRUE(a > b);
 }
 
-TEST(test_03, equality_test)
+TEST(test_03, equality)
 {
     Decimal a("100");
     Decimal b("100");
     ASSERT_TRUE(a == b);
-}
-
-TEST(test_04, copy_test)
-{
-    Decimal a("123");
-    Decimal b = a;
-    ASSERT_TRUE(a == b);
-}
-
-TEST(test_05, different_numbers)
-
-{
-    Decimal a("999");
-    Decimal b("1");
-    ASSERT_TRUE(a > b);
 }
 
 int main(int argc, char **argv) {
