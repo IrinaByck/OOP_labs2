@@ -12,9 +12,9 @@ class Decimal {
 
         Decimal(const Decimal& other); //копия существующего массива(ссылка на существующий объект Decimal)
         Decimal(Decimal&& other) noexcept; //конструктор перемещения
-
-        Decimal& operator=(const Decimal& other);        //оператор присваивания копированием
-        Decimal& operator=(Decimal&& other) noexcept;    //оператор присваивания перемещением
+ 
+        Decimal& operator=(const Decimal& other);// Оператор присваивания копированием
+        Decimal& operator=(Decimal&& other) noexcept;// Оператор присваивания перемещением
         ~Decimal() noexcept; //очищает динамическую память, когда массив уничтожается
         
         Decimal operator+(const Decimal& other) const;//арифметические операторы
