@@ -1,29 +1,19 @@
 cmake_minimum_required(VERSION 3.10)
-project(decimal)
+project(decimal_lab)
 
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror=maybe-uninitialized")
+# Находим Google Test
+find_package(GTest REQUIRED)
 
-include(FetchContent)
-FetchContent_Declare(
-  googletest
-  GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG v1.15.2
-  TLS_VERIFY false
-)
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-FetchContent_MakeAvailable(googletest)
+# Библиотека Decimal
+add_library(decimal_lib src/decimal.cpp)
+target_include_directories(decimal_lib PUBLIC include)
 
-add_library(${CMAKE_PROJECT_NAME}_lib src/decimal.cpp)
-add_executable(${CMAKE_PROJECT_NAME}_exe main.cpp)
+# Основная программа
+add_executable(main_program main.cpp)
+target_link_libraries(main_program decimal_lib)
 
-target_link_libraries(${CMAKE_PROJECT_NAME}_exe PRIVATE ${CMAKE_PROJECT_NAME}_lib)
-
-enable_testing()
-
-add_executable(tests test/test_decimal.cpp)
-target_link_libraries(tests ${CMAKE_PROJECT_NAME}_lib gtest_main)
-
-add_test(NAME DecimalTests COMMAND tests)
+# Тесты
+add_executable(tests test/tests.cpp)
+target_link_libraries(tests decimal_lib GTest::gtest GTest::gtest_main)
