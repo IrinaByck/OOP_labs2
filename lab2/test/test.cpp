@@ -21,8 +21,3 @@ TEST(test_03, equality)
     Decimal b("100");
     ASSERT_TRUE(a == b);
 }
-
-int main(int argc, char **argv) {
-    testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
-}
