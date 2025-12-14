@@ -1,31 +1,31 @@
 #pragma once
 
-#include <iostream>//input//output
+#include <iostream>
 #include <string>
-#include <stdexcept>//исключения
+#include <stdexcept>
 class Decimal {
     public:
     
-        Decimal();//конструктор по умолчанию
-        Decimal(size_t n, unsigned char t = 0);//параметризованный конструктор-массив из n элементов, со значением t всех элементов
-        Decimal(const std::string &t); //конструктор из строки(ссылка на существующую строку)
+        Decimal();
+        Decimal(size_t n, unsigned char t = 0);
+        Decimal(const std::string &t);
 
-        Decimal(const Decimal& other); //копия существующего массива(ссылка на существующий объект Decimal)
-        Decimal(Decimal&& other) noexcept; //конструктор перемещения
+        Decimal(const Decimal& other);
+        Decimal(Decimal&& other) noexcept;
  
-        Decimal& operator=(const Decimal& other);// Оператор присваивания копированием
-        Decimal& operator=(Decimal&& other) noexcept;// Оператор присваивания перемещением
-        ~Decimal() noexcept; //очищает динамическую память, когда массив уничтожается
+        Decimal& operator=(const Decimal& other);
+        Decimal& operator=(Decimal&& other) noexcept;
+        ~Decimal() noexcept;
         
-        Decimal operator+(const Decimal& other) const;//арифметические операторы
+        Decimal operator+(const Decimal& other) const;
         Decimal operator-(const Decimal& other) const;
 
-        bool operator==(const Decimal& other) const;//операторы сравнения
+        bool operator==(const Decimal& other) const;
         bool operator>(const Decimal& other) const;
         bool operator<(const Decimal& other) const;
-        void print(std::ostream& os) const;//метод вывода числа в поток
+        void print(std::ostream& os) const;
 
 private:
-    size_t _size;//количество цифр в числе
-    unsigned char* _array;//указатель на массив в динамической памяти, где каждая ячейка хранит цифру типа unsigned char
+    size_t _size;
+    unsigned char* _array;
 };
